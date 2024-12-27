@@ -1,0 +1,111 @@
+<% layout("/layouts/boilarplate") %>
+ <body>
+  <style>
+    #filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter {
+      margin-right: 1.5rem;
+      text-align: center;
+      margin-top: 1.2rem;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+    .filter:hover {
+      opacity: 1;
+    }
+    .filter p {
+      font-size: 0.9rem;
+    }
+    .checkToggle{
+      height: 3rem;
+      border: 1px solid #2d2d2d;
+      padding: 0.5rem;
+      border-radius: 1.5rem ;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+  <div id="filters">
+    <div class="filter">
+      <i class="fa-solid fa-fire"></i>
+      <p>Trendin</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-bed"></i>
+      <p>Rooms</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-mountain-city"></i>
+      <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-mountain"></i>
+      <p>Mountains</p>
+    </div>
+    <div class="filter">
+      <i class="fa-brands fa-fort-awesome"></i>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-person-swimming"></i>
+      <p>Amazing pools</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-tent"></i>
+      <p>Camping</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-cow"></i>
+      <p>Farms</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-snowflake"></i>
+      <p>Arctic</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-igloo"></i>
+      <p>Domes</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-ship"></i>
+      <p>Boats</p>
+    </div>
+    <div class="checkToggle">
+    <div class="form-check-reverse form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault"
+        >Display total after taxes</label
+      >
+    </div>
+  </div>
+  </div>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(let listing of allListings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-card">
+      <div class="card listing-card">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="listingImg"
+          style="height: 20rem"
+        />
+        <div class="card-img-overlay "></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b> <br />
+            &#8377; <%= listing.price.toLocaleString("en-IN") %> /night
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+</body>
